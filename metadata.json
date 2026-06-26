@@ -1,0 +1,7 @@
+{
+  "name": "Portugal World Cup Dashboard",
+  "description": "A high-fidelity, futuristic World Cup arena featuring real-time match simulations, a live countdown timer, and an interactive Portugal squad grid with tactile audio-visual dossiers.",
+  "logo": "/favicon.svg",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
