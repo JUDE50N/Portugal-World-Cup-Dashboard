@@ -142,7 +142,9 @@ export default function SquadGrid({ isDarkMode }: SquadGridProps) {
                 <span className="font-mono text-[9px] uppercase tracking-wider text-[#D4AF37] font-extrabold">
                   {player.position}
                 </span>
-                <h3 className="font-sans font-black text-sm tracking-tight text-white uppercase mt-0.5 group-hover:text-[#D4AF37] transition-colors">
+                <h3 className={`font-sans font-black text-sm tracking-tight uppercase mt-0.5 group-hover:text-[#D4AF37] transition-colors ${
+                  isDarkMode ? 'text-white' : 'text-gray-900'
+                }`}>
                   {player.name}
                 </h3>
                 <span className={`font-mono text-[10px] block mt-0.5 ${isDarkMode ? 'text-white/50' : 'text-gray-500'}`}>

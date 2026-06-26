@@ -233,16 +233,16 @@ export default function MatchCountdown({ isDarkMode }: MatchCountdownProps) {
             </div>
 
             {/* Massive Cyber-grid Countdown Timer Numbers */}
-            <div className="mt-5 grid grid-cols-4 gap-2">
+            <div className="mt-5 grid grid-cols-4 gap-1.5 xs:gap-2">
               {[
                 { label: 'DAYS', val: timeLeft.days },
                 { label: 'HOURS', val: timeLeft.hours },
-                { label: 'MINUTES', val: timeLeft.minutes },
-                { label: 'SECONDS', val: timeLeft.seconds }
+                { label: 'MINS', val: timeLeft.minutes },
+                { label: 'SECS', val: timeLeft.seconds }
               ].map((unit) => (
                 <div
                   key={unit.label}
-                  className={`p-3 rounded-lg border flex flex-col items-center justify-center relative overflow-hidden ${
+                  className={`p-1.5 xs:p-2.5 sm:p-3 rounded-lg border flex flex-col items-center justify-center relative overflow-hidden ${
                     isDarkMode
                       ? 'bg-black/30 border-white/5 shadow-[inset_0_1px_3px_rgba(0,0,0,0.5)]'
                       : 'bg-gray-100 border-gray-200'
@@ -250,10 +250,10 @@ export default function MatchCountdown({ isDarkMode }: MatchCountdownProps) {
                 >
                   <div className="absolute inset-x-0 top-0 h-0.5 bg-gradient-to-r from-[#D4AF37] to-transparent opacity-40" />
                   
-                  <span className="font-mono font-extrabold text-2xl sm:text-3xl tabular-nums tracking-widest text-[#D4AF37]">
+                  <span className="font-mono font-extrabold text-lg xs:text-xl sm:text-2xl md:text-3xl tabular-nums tracking-wide text-[#D4AF37]">
                     {timeLeft.isOver ? '00' : String(unit.val).padStart(2, '0')}
                   </span>
-                  <span className="font-mono text-[8px] sm:text-[9px] tracking-widest text-white/40 mt-1 uppercase">
+                  <span className="font-mono text-[7px] xs:text-[8px] sm:text-[9px] tracking-wide text-white/40 mt-1 uppercase">
                     {unit.label}
                   </span>
                 </div>

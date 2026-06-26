@@ -88,7 +88,11 @@ export default function Header({ isDarkMode, onToggleDarkMode }: HeaderProps) {
 
           <div>
             <div className="flex items-center gap-2">
-              <h1 className="font-sans font-black tracking-tighter text-xl uppercase bg-gradient-to-r from-[#D4AF37] via-white to-[#8B0D1E] bg-clip-text text-transparent">
+              <h1 className={`font-sans font-black tracking-tighter text-xl uppercase bg-gradient-to-r ${
+                isDarkMode 
+                  ? 'from-[#D4AF37] via-white to-[#8B0D1E]' 
+                  : 'from-[#8B0D1E] via-gray-800 to-[#004822]'
+              } bg-clip-text text-transparent`}>
                 Federação Portuguesa de Futebol
               </h1>
               <span className="bg-[#D4AF37]/10 border border-[#D4AF37]/30 text-[#D4AF37] font-mono text-[9px] px-1.5 py-0.5 rounded-sm uppercase tracking-widest animate-pulse">
@@ -104,24 +108,32 @@ export default function Header({ isDarkMode, onToggleDarkMode }: HeaderProps) {
         {/* Tactical HUD Metrics */}
         <div className="flex flex-wrap items-center gap-4 md:gap-6">
           {/* Lisbon & UTC Clocks */}
-          <div className="flex gap-4 border-l border-r border-dashed border-white/10 px-4 py-1 font-mono text-xs">
+          <div className={`flex gap-4 border-l border-r border-dashed ${
+            isDarkMode ? 'border-white/10' : 'border-gray-200'
+          } px-4 py-1 font-mono text-xs`}>
             <div className="flex flex-col">
               <span className={isDarkMode ? 'text-[#D4AF37]' : 'text-[#8B0D1E] font-bold'}>LISBON (WEST)</span>
               <span className="font-semibold tabular-nums text-sm tracking-widest">
                 {formatLisbonTime(currentTime)}
               </span>
             </div>
-            <div className="flex flex-col border-l border-white/10 pl-4">
+            <div className={`flex flex-col border-l ${
+              isDarkMode ? 'border-white/10' : 'border-gray-200'
+            } pl-4`}>
               <span className={isDarkMode ? 'text-white/40' : 'text-gray-400'}>UTC TIME</span>
-              <span className="font-medium tabular-nums text-sm text-white/40">
+              <span className={`font-medium tabular-nums text-sm ${
+                isDarkMode ? 'text-white/40' : 'text-gray-500'
+              }`}>
                 {currentTime.toUTCString().slice(17, 25)}
               </span>
             </div>
           </div>
 
           {/* Connection status */}
-          <div className="hidden sm:flex items-center gap-2 font-mono text-[10px] text-[#00FF00]/80">
-            <Radio className="w-3.5 h-3.5 text-[#00FF00] animate-pulse" />
+          <div className={`hidden sm:flex items-center gap-2 font-mono text-[10px] ${
+            isDarkMode ? 'text-[#00FF00]/80' : 'text-emerald-700'
+          }`}>
+            <Radio className={`w-3.5 h-3.5 ${isDarkMode ? 'text-[#00FF00]' : 'text-emerald-600'} animate-pulse`} />
             <span className="tracking-widest">SYNC_TARGET: FIFA_TMS_MAIN</span>
           </div>
 

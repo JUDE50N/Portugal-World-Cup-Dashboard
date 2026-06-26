@@ -29,11 +29,15 @@ export default function PlayerDossier({ player, isDarkMode, onClose }: PlayerDos
   const bioIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const roleIntervalRef = useRef<NodeJS.Timeout | null>(null);
   const overlayRef = useRef<HTMLDivElement | null>(null);
+  const statsContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     // Scroll modal overlay and window to top on player or tab changes (crucial for mobile/tablet)
     if (overlayRef.current) {
       overlayRef.current.scrollTop = 0;
+    }
+    if (statsContainerRef.current) {
+      statsContainerRef.current.scrollTop = 0;
     }
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [player, activeTab]);
@@ -133,7 +137,7 @@ export default function PlayerDossier({ player, isDarkMode, onClose }: PlayerDos
   return (
     <div
       ref={overlayRef}
-      className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-md animate-fade-in"
+      className="fixed inset-0 z-50 overflow-y-auto flex items-start sm:items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-fade-in"
     >
       <div
         id="player-dossier-modal"
@@ -313,7 +317,7 @@ export default function PlayerDossier({ player, isDarkMode, onClose }: PlayerDos
             </div>
 
             {/* TAB CONTENT OVERLAYS */}
-            <div className="flex-grow">
+            <div ref={statsContainerRef} className="flex-grow overflow-y-auto max-h-[350px] sm:max-h-[420px] lg:max-h-none pr-1.5 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
               
               {/* TAB 1: OVERVIEW */}
               {activeTab === 'overview' && (
